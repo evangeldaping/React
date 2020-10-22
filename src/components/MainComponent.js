@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
+import About from './AboutComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import DishDetail from './DishDetailsComponent';
@@ -41,12 +42,18 @@ class Main extends Component {
                   comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
             );
         };
+
+        const AboutPage = () => {
+            return <About leaders={this.state.leaders} />;
+          };
+        
         
         return (
         <div>
             <Header />
             <Switch>
                 <Route path="/home" component={HomePage} />
+                <Route path="/aboutus" component={AboutPage} />
                 <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
                 <Route path='/menu/:dishId' component={DishWithId} />
                 <Route exact path="/contactus" component={Contact} />
